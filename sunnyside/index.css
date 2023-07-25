@@ -1,0 +1,284 @@
+body{
+    height: 100%;
+    margin: 0%;
+}
+p{
+    font-family: 'Barlow', sans-serif;
+}
+
+h1,h3,h5,h6{
+    font-family: 'Fraunces', serif;
+}
+
+
+/* header */
+
+button{
+    height: 55px;
+    width: 140px;
+    border-radius: 30px;
+    border: 0px;
+    color: #24303E;
+    font-family: 'Fraunces';
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 25px; 
+    letter-spacing: -0.107px;
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+
+button:hover{
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    background-color: #77cdf5;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+.top_section{
+    background-image: url("/images/orange.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 800px;
+    text-align: center;
+}
+
+.top_section h1{
+    color: #FFF;
+    text-align: center;
+    font-family: Fraunces 9pt Soft;
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    letter-spacing: 8.75px;
+    text-transform: uppercase;
+    margin-top: 115px;
+}
+
+.top_section img{
+    margin-top: 30px;
+}
+
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 55px;
+    margin-right: 55px;
+    padding-top: 40px;
+}
+
+.header_content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 480px;
+    
+}
+
+.header_content a {
+    color: #FFF;
+    font-family: Barlow;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 25px;
+    letter-spacing: -0.129px;
+    text-decoration: none;
+}
+
+
+/* body  */
+
+.first_row{
+    display: flex;
+    flex-direction: row;
+    height: 600px;
+}
+
+.first_row img{
+    width: 100%;
+}
+
+.text_content{
+    width: 720px;
+}
+
+.text{
+    margin: 170px;
+}
+
+.text h3{
+    color: #24303E;
+    font-family: 'Fraunces' 9pt Soft;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    letter-spacing: -0.286px;
+}
+
+.text p{
+    color: #808397;
+    font-family: Barlow;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px; 
+    letter-spacing: -0.129px;
+}
+
+.pic_text{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.pic_text_writing{
+    position: absolute;
+    text-align: center;
+    top: 60%;
+    left: 10%;
+    width: 30%;
+}
+
+.pic_text_writing1{
+    position: absolute;
+    text-align: center;
+    top: 60%;
+    left: 60%;
+    width: 30%;
+}
+
+
+
+
+
+/* testimonials */
+.testimonial{
+    text-align: center;
+    height: 490px;
+    padding: 165px;
+
+}
+
+.testimonial_text{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: 85px;
+}
+
+.testimonial_text img{
+    height: 72px;
+    width: 72px;
+    margin-bottom: 65px;
+}
+
+.testimonial h3{
+    color: #A7AAAD;
+    text-align: center;
+    font-family: 'Fraunces' 9pt Soft;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    letter-spacing: 5px;
+}
+
+.testimonial_text p{
+    color: #5B636D;
+text-align: center;
+font-family: Barlow;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: 32px;
+letter-spacing: -0.129px;
+margin: 15px;
+}
+
+.testimonial h5{
+    color: #24303E;
+    text-align: center;
+    font-family: Fraunces 9pt Soft;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    letter-spacing: -0.129px;
+    margin-top: 70px;
+    margin-bottom: 1px;
+}
+
+.testimonial_position p{
+    margin: 0px;
+    color: #A7AAAD;
+    text-align: center;
+    font-family: Barlow;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 25px; /* 178.571% */
+    letter-spacing: -0.1px;
+}
+
+
+
+
+
+/* images in four */
+
+.images_row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
+
+/* footer */
+
+.footer{
+    display: flex;
+    flex-direction: column;
+    background-color:#90D4C6;
+    height: 350px;
+    align-items: center;
+}
+
+.footer img{
+    width: 170px;
+    height: 33px;
+    padding-top: 75px;
+}
+
+.group{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 40px;
+    width: 300px;
+    gap: 57px;
+}
+
+.group p{
+    color: #458D7E;
+    font-family: Barlow;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 25px; 
+    letter-spacing: -0.129px;
+    transition: 0.5s;
+}
+
+.footer p:hover{
+    color: #FFF;
+    cursor: pointer;
+    text-decoration: none;
+}
