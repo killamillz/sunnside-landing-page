@@ -14,6 +14,8 @@ const standalone_1 = require("@apollo/server/standalone");
 const typeDefs_1 = require("./graphQL/typeDefs");
 const resolvers_1 = require("./graphQL/resolvers");
 const database_1 = require("./config1/database");
+const graphql_1 = require("graphql");
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 dotenv_1.default.config();
 exports.app = (0, express_1.default)();
 (0, database_1.connectDatabase)();
@@ -30,25 +32,26 @@ const server = new server_1.ApolloServer({
     resolvers: resolvers_1.resolvers,
 });
 (async () => {
-    const { url } = await (0, standalone_1.startStandaloneServer)(server);
+    const { url } = await (0, standalone_1.startStandaloneServer)(server, { context: async ({ req }) => {
+            const token = req.headers.authorization || '';
+            if (token) {
+                const decoded = jsonwebtoken_1.default.verify(token, `${process.env.APP_SECRET}`);
+                if (decoded)
+                    return { decoded };
+                if (!decoded) {
+                    throw new graphql_1.GraphQLError('User is not authenticated', {
+                        extensions: {
+                            code: 'UNAUTHENTICATED',
+                            http: { status: 401 },
+                        },
+                    });
+                }
+            }
+        }
+    });
     console.log(`server ready at ${url}`);
 })();
-function getUser(token) {
-    throw new Error('Function not implemented.');
-}
-// , {
-//   context: async ({ req }) => {
-//     // get the user token from the headers
-//     const token = req.headers.authorization || '';
-//     // try to retrieve a user with the token
-//     const user:any = getUser(token);
-//     if (!user)
-//       throw new GraphQLError('User is not authenticated', {
-//         extensions: {
-//           code: 'UNAUTHENTICATED',
-//           http: { status: 401 },
-//         },
-//       });
-//     return { user };
-//   },
+// function getUser(token: string) {
+//   throw new Error('Function not implemented.');
 // }
+// , {

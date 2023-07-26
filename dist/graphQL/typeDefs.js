@@ -15,17 +15,15 @@ exports.typeDefs = `#graphql
        type Book {
               title: String!
               author: String!
-              pageCount: Int!
+              pageCount: String!
               datePublished: String
               description: String!
               genre: String
               Publisher: String
        }
 
-
-       type UserOne {
-              user: User
-              token: String!
+       type Token {
+              token: String
        }
 
        
@@ -33,6 +31,7 @@ exports.typeDefs = `#graphql
               firstName: String!
               lastName: String!
               email: String!
+              gender: String!
        }
 
        input UpdateUserInput{
@@ -45,16 +44,18 @@ exports.typeDefs = `#graphql
        }
 
        input CreateBookInput {
-              id:String
+              title: String
               author: String!
               pageCount: String!
               datePublished: String!
               description: String!
               genre: String!
+              Publisher: String
        }
        
        input UpdateBookInput {
-              id: String
+              id: ID
+              title: String
               author: String
               pageCount: String
               datePublished: String
@@ -78,9 +79,9 @@ exports.typeDefs = `#graphql
 
        type Mutation {
               createUser(user: CreateUserInput!): User!
-              loginUser(user: LoginUserInput!): UserOne!
+              loginUser(user: LoginUserInput!): Token
               updateUser(user: UpdateUserInput!) : User
-              deleteUser(id: String): User!
+              deleteUser(id: ID!): User!
               createBook(book: CreateBookInput!): Book!
               updateBook(book: UpdateBookInput): Book!
               deleteBook(id: String): Book!

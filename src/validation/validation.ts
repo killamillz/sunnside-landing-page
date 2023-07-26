@@ -10,7 +10,7 @@ export const userSchema = z.object({
     gender: z.string({
         required_error: "Gender is required!"
     }),
-    email: z.string({
+    email: z.string({ 
         required_error: "Email is required!"
     }).email(),
     password:z.string({
@@ -40,7 +40,7 @@ export const userSchemaBooks = z.object({
     description: z.string({
         required_error: "Description is required!"
     }),
-    pageCount: z.number({
+    pageCount: z.string({
         required_error: "The page count is required!"
     }),
     genre: z.string({

@@ -43,7 +43,7 @@ exports.userSchemaBooks = zod_1.default.object({
     description: zod_1.default.string({
         required_error: "Description is required!"
     }),
-    pageCount: zod_1.default.number({
+    pageCount: zod_1.default.string({
         required_error: "The page count is required!"
     }),
     genre: zod_1.default.string({

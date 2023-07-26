@@ -10,6 +10,8 @@ import { typeDefs } from './graphQL/typeDefs';
 import { resolvers } from './graphQL/resolvers';
 import { connectDatabase } from './config1/database';
 import {GraphQLError} from 'graphql'
+import  jwt  from 'jsonwebtoken';
+import { decode } from 'punycode';
 
 dotenv.config();
 export const app = express();
@@ -44,35 +46,34 @@ const server = new ApolloServer({
 
 
 (async () =>{
-  const { url } = await startStandaloneServer(server);
-  console.log(`server ready at ${url}`)
+  const { url } = await startStandaloneServer(server,
+    {context: async ({ req }) => {
+      const token = req.headers.authorization || '';
+      if(token){
+        const decoded = jwt.verify(token, `${process.env.APP_SECRET}`)
+        if(decoded)
+        return {decoded}
+
+        if (!decoded){
+          throw new GraphQLError('User is not authenticated', {
+            extensions: {
+              code: 'UNAUTHENTICATED',
+              http: { status: 401 },
+            },
+          }); 
+        }
+      }
+
+
+    }
+  })
+    console.log(`server ready at ${url}`)  ;
 })()
 
 
-function getUser(token: string) {
-  throw new Error('Function not implemented.');
-}
+// function getUser(token: string) {
+//   throw new Error('Function not implemented.');
+// }
 
 // , {
-//   context: async ({ req }) => {
-//     // get the user token from the headers
-//     const token = req.headers.authorization || '';
-
-//     // try to retrieve a user with the token
-//     const user:any = getUser(token);
-
   
-//     if (!user)
-
-
-//       throw new GraphQLError('User is not authenticated', {
-//         extensions: {
-//           code: 'UNAUTHENTICATED',
-//           http: { status: 401 },
-//         },
-//       });
-
-   
-//     return { user };
-//   },
-// }
