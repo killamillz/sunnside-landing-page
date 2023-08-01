@@ -1,7 +1,7 @@
 import { UnknownError } from "http-errors"
 import User from "../models/userModels"
 import Book from "../models/bookModels"
-import { userSchemaBooks, userSchema2, userSchema } from "../validation/validation"
+import { userSchemaBooks, userSchema2, userSchema1 } from "../validation/validation"
 import { SaltGenerator, passwordGenerator, hashPassword, tokenGenerator } from "../utilities/utility"
 import { sendmail, emailHtml } from "../utilities/notification";
 import bcrypt from "bcryptjs"
@@ -202,7 +202,8 @@ export const resolvers = {
               
                             }
                             const user = args.user
-                     const error = userSchema.safeParse(user);
+                     const error = userSchema1.safeParse(user);
+                     console.log(error)
                      if(error.success === false){
                             throw new GraphQLError('User is not authenticated', {
                                    extensions: {

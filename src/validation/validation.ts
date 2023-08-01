@@ -1,8 +1,30 @@
 import z from 'zod'
 
 export const userSchema = z.object({
-    userName:  z.string({
+    lastName:  z.string({
         required_error: "Username is required!"
+    }),
+    firstName: z.string({
+        required_error: "firstName is required!"
+    }),
+    gender: z.string({
+        required_error: "Gender is required!"
+    }),
+    email: z.string({ 
+        required_error: "Email is required!"
+    }).email(),
+    password:z.string({
+        required_error: "Password is required!"
+    }).min(5)
+})
+
+export const userSchema1 = z.object({
+
+    _id: z.string({
+        required_error: "Id is required"
+    }),
+    lastName:  z.string({
+        required_error: "lastName is required!"
     }),
     firstName: z.string({
         required_error: "firstName is required!"

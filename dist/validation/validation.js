@@ -3,11 +3,31 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.userSchemaBooks = exports.userSchema2 = exports.userSchema = void 0;
+exports.userSchemaBooks = exports.userSchema2 = exports.userSchema1 = exports.userSchema = void 0;
 const zod_1 = __importDefault(require("zod"));
 exports.userSchema = zod_1.default.object({
-    userName: zod_1.default.string({
+    lastName: zod_1.default.string({
         required_error: "Username is required!"
+    }),
+    firstName: zod_1.default.string({
+        required_error: "firstName is required!"
+    }),
+    gender: zod_1.default.string({
+        required_error: "Gender is required!"
+    }),
+    email: zod_1.default.string({
+        required_error: "Email is required!"
+    }).email(),
+    password: zod_1.default.string({
+        required_error: "Password is required!"
+    }).min(5)
+});
+exports.userSchema1 = zod_1.default.object({
+    _id: zod_1.default.string({
+        required_error: "Id is required"
+    }),
+    lastName: zod_1.default.string({
+        required_error: "lastName is required!"
     }),
     firstName: zod_1.default.string({
         required_error: "firstName is required!"

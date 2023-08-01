@@ -182,7 +182,8 @@ exports.resolvers = {
                     });
                 }
                 const user = args.user;
-                const error = validation_1.userSchema.safeParse(user);
+                const error = validation_1.userSchema1.safeParse(user);
+                console.log(error);
                 if (error.success === false) {
                     throw new graphql_1.GraphQLError('User is not authenticated', {
                         extensions: {
